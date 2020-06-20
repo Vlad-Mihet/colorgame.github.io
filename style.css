@@ -22,3 +22,29 @@ header h4 {
     background-color: #0275d8;
     color: white;
 }
+
+.container {
+    margin-top: 5%;
+}
+
+.row {
+    margin: 2.5% 0;
+}
+
+.col-4 {
+    height: 330px;
+    border: 2rem transparent;
+}
+
+.colorBlock {
+    width: 99.5%; /*can be in percentage also.*/
+    height: 99%;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    border-radius: 4rem;
+}
+
+.colorBlock:hover {
+    cursor: pointer;
+}
