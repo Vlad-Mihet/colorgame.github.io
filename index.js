@@ -41,9 +41,13 @@ difficulties.forEach(element => {
             } else if (selectedDiff == "Hard") {
                 hard = true;
             }
-            generateColorBlocks();
-            giveToRandomBlockSolution();
-            addClickListeners();
+            document.getElementById('info').classList.add('fade-out');
+            document.getElementById('info').style.display = 'none';
+            setTimeout(function() {
+                generateColorBlocks();
+                giveToRandomBlockSolution();
+                addClickListeners();
+            }, 1200)
         }
     })
 });
@@ -60,7 +64,7 @@ var rows = document.getElementsByClassName('row');
 
 // Generating corresponding blocks of colors
 
-function generateBlocks (index) {
+function generateBlocks(index) {
     for (j = 0; j < 3; j++) {
         let div = document.createElement('div');
         let insideDiv = document.createElement('div');
@@ -68,6 +72,7 @@ function generateBlocks (index) {
         insideDiv.style.backgroundColor = generateRandomColor();
         insideDiv.classList.add('colorBlock')
         div.appendChild(insideDiv);
+        div.classList.add('fade-in');
         rows[index].appendChild(div);
     }
 }
@@ -89,7 +94,7 @@ function generateColorBlocks() {
 
 // Give a random block the solution color
 
-function giveToRandomBlockSolution () {
+function giveToRandomBlockSolution() {
     var gameColorBlocks = document.getElementsByClassName('colorBlock');
     if (easy) {
         gameColorBlocks[randomBlockSolutionEasy].style.backgroundColor = solution;
@@ -117,19 +122,42 @@ function addClickListeners() {
             if (gameColorBlocks[i].style.backgroundColor == solution) {
                 for (let j = 0; j < gameColorBlocks.length; j++) {
                     gameColorBlocks[j].style.backgroundColor = solution;
-                    if(gameColorBlocks[j].style.opacity == 0) {
+                    if (gameColorBlocks[j].style.opacity == 0) {
                         gameColorBlocks[j].classList.add('fade-in');
                     }
                 }
                 if (tries == 0) {
-                    alert('Wow! You really are lucky today!')
+                    alert('Wow! You really are lucky today!');
+                    setTimeout(() => {
+                        document.getElementById('play-again-menu').style.display = 'block';
+                        let rows = document.getElementsByClassName('row');
+                        while (rows[0]) {
+                            rows[0].parentNode.removeChild(rows[0]);
+                        }
+                    }, 5000);
                 } else {
                     alert(`Congrats! You won in ${tries} tries!`);
+                    setTimeout(() => {
+                        document.getElementById('play-again-menu').style.display = 'block';
+                        let rows = document.getElementsByClassName('row');
+                        while (rows[0]) {
+                            rows[0].parentNode.removeChild(rows[0]);
+                        }
+                    }, 5000);
                 }
             } else {
-                tries ++;
+                tries++;
                 gameColorBlocks[i].classList.add('fade-out');
             }
         });
     };
 };
+
+// Need to implement a play again function to the button
+
+/* 
+var playButton = document.getElementById('playAgain');
+playButton.addEventListener('click', () => {
+    startGame = false;
+    document.getElementById('difficultyChooserAgain').style.display = 'block';
+}); */

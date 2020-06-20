@@ -24,7 +24,7 @@ header h4 {
 }
 
 .container {
-    margin-top: 5%;
+    margin-top: 3.5%;
 }
 
 .row {
@@ -37,7 +37,8 @@ header h4 {
 }
 
 .colorBlock {
-    width: 99.5%; /*can be in percentage also.*/
+    width: 99.5%;
+    /*can be in percentage also.*/
     height: 99%;
     margin: 0 auto;
     padding: 10px;
@@ -47,4 +48,36 @@ header h4 {
 
 .colorBlock:hover {
     cursor: pointer;
+}
+
+#info hr {
+    border-width: 2px;
+    margin: 1.5rem 0;
+}
+
+#info p {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+#playAgain {
+    margin-top: .5rem;
+    outline: none;
+    background-color: white;
+    border: 2px solid #0275d8;
+    border-radius: 2rem;
+    padding: .125rem .65rem;
+}
+
+#playAgain:hover {
+    color: white;
+    background-color: #0275d8;
+}
+
+#play-again-menu {
+    display: none;
+}
+
+#difficultyChooserAgain {
+    display: none;
 }

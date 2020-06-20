@@ -18,7 +18,7 @@
 <body>
     <header class="text-center bg-primary text-white">
         <h1> Color Guessing Game by Vlad </h1>
-        <h3> RGN stands for Red, Green, Blue </h3>
+        <h3> RGB stands for Red, Green, Blue </h3>
         <h4> The color: </h4>
         <h4 id="colorToBeGuessed"> </h4>
     </header>
@@ -28,7 +28,24 @@
         <span class="difficulty"> Hard </span>
     </div>
     <div id="game-interface" class="container">
-
+        <div id="info" class="text-center">
+            <h1> What is this game about? </h1>
+            <hr>
+            <p> The game consists of a rgb code for a color being displayed on the top of screen </p>
+            <p> The objective of the game is to choose, from 3, 6, or 9 color blocks the color block that represents the rgb code present at the top of the screen. </p>
+            <p> The difficulty may be chosen from the menu below the rgb code. There are 3 options; Easy, Medium and Hard. </p>
+            <hr>
+            <h2> Good Luck! </h>
+        </div>
+        <div id="play-again-menu" class="text-center">
+            <h2> Did you enjoy the game? </h2>
+            <button id="playAgain"> Play Again </button>
+            <div id="difficultyChooserAgain" class="text-center">
+                <span class="difficulty"> Easy </span>
+                <span class="difficulty"> Medium </span>
+                <span class="difficulty"> Hard </span>
+            </div>
+        </div>
     </div>
     <!-- Optional JavaScript -->
     <script src="index.js"></script>
