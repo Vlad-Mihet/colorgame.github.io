@@ -32,7 +32,7 @@ header h4 {
 }
 
 .col-4 {
-    height: 330px;
+    height: 33vh;
     border: 2rem transparent;
 }
 
@@ -78,6 +78,11 @@ header h4 {
     display: none;
 }
 
-#difficultyChooserAgain {
-    display: none;
+@media (max-width: 420px) {
+    .col-4 {
+        height: 6rem;
+    }
+    .colorBlock {
+        border-radius: 2rem;
+    }
 }

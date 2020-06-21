@@ -58,19 +58,18 @@ for (let j = 0; j < 3; j++) {
     let row = document.createElement('div');
     row.classList.add('row');
     document.getElementById('game-interface').appendChild(row);
-}
-
-var rows = document.getElementsByClassName('row');
+};
 
 // Generating corresponding blocks of colors
 
 function generateBlocks(index) {
+    var rows = document.getElementsByClassName('row');
     for (j = 0; j < 3; j++) {
         let div = document.createElement('div');
         let insideDiv = document.createElement('div');
         div.classList.add('col-4');
         insideDiv.style.backgroundColor = generateRandomColor();
-        insideDiv.classList.add('colorBlock')
+        insideDiv.classList.add('colorBlock');
         div.appendChild(insideDiv);
         div.classList.add('fade-in');
         rows[index].appendChild(div);
@@ -135,6 +134,7 @@ function addClickListeners() {
                             rows[0].parentNode.removeChild(rows[0]);
                         }
                     }, 5000);
+                    startGame = false;
                 } else {
                     alert(`Congrats! You won in ${tries} tries!`);
                     setTimeout(() => {
@@ -144,6 +144,7 @@ function addClickListeners() {
                             rows[0].parentNode.removeChild(rows[0]);
                         }
                     }, 5000);
+                    startGame = false;
                 }
             } else {
                 tries++;
@@ -155,9 +156,24 @@ function addClickListeners() {
 
 // Need to implement a play again function to the button
 
-/* 
 var playButton = document.getElementById('playAgain');
 playButton.addEventListener('click', () => {
+    hard = false;
+    medium = false;
+    easy = false;
     startGame = false;
-    document.getElementById('difficultyChooserAgain').style.display = 'block';
-}); */
+    for (let j = 0; j < 3; j++) {
+        let row = document.createElement('div');
+        row.classList.add('row');
+        document.getElementById('game-interface').appendChild(row);
+    };
+    solution = generateRandomColor();
+    document.getElementById('colorToBeGuessed').innerHTML = solution;
+    giveToRandomBlockSolution();
+    difficulties.forEach(item => {
+        item.classList.remove('selectedDifficulty');
+    });
+    document.getElementById('play-again-menu').style.display = 'none';
+    document.getElementById('info').style.display = 'block';
+    document.getElementById('info').classList.add('fade-in');
+});
