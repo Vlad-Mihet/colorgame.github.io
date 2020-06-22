@@ -3,6 +3,27 @@ let medium = false;
 let easy = false;
 startGame = false;
 
+let mainHeader = document.getElementsByTagName('h1')[0];
+let h4Header = document.getElementsByTagName('h4')[1];
+let h4Header2 = document.getElementsByTagName('h4')[0];
+
+// Show the color only after the start of the game
+
+function displayGameHeaders() {
+    mainHeader.style.display = 'block';
+    h4Header2.style.display = 'inline';
+    h4Header.style.display = 'inline';
+    document.getElementById('color').style.padding = '1rem';
+}
+
+// Simulate a return to the start to the game
+
+function hideGameHeaders() {
+    h4Header2.style.display = 'none';
+    h4Header.style.display = 'none';
+    document.getElementById('color').style.padding = '0';
+}
+
 // Select a random block to have the solution color as its background color according to the difficulty
 
 let randomBlockSolutionEasy = Math.floor(Math.random() * 3);
@@ -19,7 +40,7 @@ function generateRandomColor() {
 }
 
 var solution = generateRandomColor();
-document.getElementById('colorToBeGuessed').innerHTML = solution;
+document.getElementById('colorToBeGuessed').innerHTML = solution.toUpperCase();
 var selectedDiff;
 let difficulties = document.querySelectorAll('.difficulty');
 
@@ -41,6 +62,7 @@ difficulties.forEach(element => {
             } else if (selectedDiff == "Hard") {
                 hard = true;
             }
+            displayGameHeaders();
             document.getElementById('info').classList.add('fade-out');
             document.getElementById('info').style.display = 'none';
             setTimeout(function() {
@@ -126,7 +148,7 @@ function addClickListeners() {
                     }
                 }
                 if (tries == 0) {
-                    alert('Wow! You really are lucky today!');
+                    alert('Wow! You got it on the 1st try!');
                     setTimeout(() => {
                         document.getElementById('play-again-menu').style.display = 'block';
                         let rows = document.getElementsByClassName('row');
@@ -136,14 +158,20 @@ function addClickListeners() {
                     }, 5000);
                     startGame = false;
                 } else {
-                    alert(`Congrats! You won in ${tries} tries!`);
+                    if (tries == 1) {
+                        alert(`Congrats! You won on the ${tries + 1}nd try!`);
+                    } else if (tries == 2) {
+                        alert(`Congrats! You won on the ${tries + 1}rd try!`);
+                    } else {
+                        alert(`Congrats! You won on the ${tries + 1}th try!`);
+                    }
                     setTimeout(() => {
                         document.getElementById('play-again-menu').style.display = 'block';
                         let rows = document.getElementsByClassName('row');
                         while (rows[0]) {
                             rows[0].parentNode.removeChild(rows[0]);
                         }
-                    }, 5000);
+                    }, 2200);
                     startGame = false;
                 }
             } else {
@@ -154,7 +182,7 @@ function addClickListeners() {
     };
 };
 
-// Need to implement a play again function to the button
+// Play Again button implementation for a 'natural feeling' return to the beginning of the game
 
 var playButton = document.getElementById('playAgain');
 playButton.addEventListener('click', () => {
@@ -176,4 +204,5 @@ playButton.addEventListener('click', () => {
     document.getElementById('play-again-menu').style.display = 'none';
     document.getElementById('info').style.display = 'block';
     document.getElementById('info').classList.add('fade-in');
+    hideGameHeaders();
 });
