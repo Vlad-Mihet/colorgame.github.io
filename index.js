@@ -167,6 +167,8 @@ function addClickListeners() {
                     }
                     setTimeout(() => {
                         document.getElementById('play-again-menu').style.display = 'block';
+                        document.getElementById('play-again-menu').style.opacity = 0;
+                        document.getElementById('play-again-menu').classList.add('fade-in');
                         let rows = document.getElementsByClassName('row');
                         while (rows[0]) {
                             rows[0].parentNode.removeChild(rows[0]);
