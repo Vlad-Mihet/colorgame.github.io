@@ -108,8 +108,8 @@ function giveToRandomBlockSolution() {
 
 /* The system works this way: 
     - If the choice is right, every block will be the color of the solution
-    - If the choice is wrong, the block dissappears via an fade-out effect
-    - The blocks that have dissappeared, will reappear and be the color of the solution 
+    - If the choice is wrong, the block disappears via an fade-out effect
+    - The blocks that have disappeared, will reappear and be the color of the solution 
       if the right choice has been made, or if the game has ended 
 */
 
